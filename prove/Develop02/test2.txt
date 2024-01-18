@@ -1,3 +1,0 @@
-Date,Time,Prompt,Response
-01/18/2024 12:50:54,12:50:54,What was the best part of my day?,nestpart day 1
-01/18/2024 12:51:07,12:51:07,Who was the most interesting person I interacted with today?,blablabla
