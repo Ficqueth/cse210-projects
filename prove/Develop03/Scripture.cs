@@ -37,7 +37,7 @@ public class Scripture
         string displayText = $"{_reference.GetDisplayText()}\n";
         foreach (Word word in _words)
         {
-            displayText = $"{displayText}{word.GetDisplayText()}\n";
+            displayText = $"{displayText}{word.GetDisplayText()}";
         }
         return displayText.Trim();
     }
