@@ -26,7 +26,7 @@ public class ListingActivity : Activity
         DateTime futureTime = GetFutureTime(_duration);
         DateTime currentTime = DateTime.Now;
 
-        while (currentTime <= futureTime)
+        while (currentTime < futureTime)
         {
             Console.Write("\n> ");
             Console.ReadLine();
