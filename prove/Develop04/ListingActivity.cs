@@ -30,8 +30,10 @@ public class ListingActivity : Activity
         {
             Console.Write("\n> ");
             Console.ReadLine();
+            _count++;
             currentTime= DateTime.Now;
         }
+        Console.WriteLine($"You listed {_count} items!\n");
         DisplayEndingMessage();
     }
 
@@ -44,6 +46,7 @@ public class ListingActivity : Activity
     }
     public List<string> GetListFromUser()
     {
+
         return _prompts;
     }
 

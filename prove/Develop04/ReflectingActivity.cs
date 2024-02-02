@@ -64,7 +64,7 @@ public class ReflectingActivity : Activity
         ShowCountDown(3);
         Console.Clear();
         string question1 = GetRandomQuestion();
-        int timing = _duration/2; // Splitting the _duration in half so we can get 2 questions in that time
+        int timing = _duration/2; // Splitting the _duration in half so we can get 2 questions within that time
         Console.Write($"> {question1} ");
         ShowSpinner(timing); 
         string question2 = GetRandomQuestion();
