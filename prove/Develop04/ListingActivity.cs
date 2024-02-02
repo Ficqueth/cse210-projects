@@ -23,7 +23,7 @@ public class ListingActivity : Activity
         Console.WriteLine($"--- {prompt} ---");
         Console.Write("You may begin in: ");
         ShowCountDown(5);
-        DateTime futureTime = GetFutureTime(_duration);
+        DateTime futureTime = DateTime.Now.AddSeconds(_duration);
         DateTime currentTime = DateTime.Now;
 
         while (currentTime < futureTime)
@@ -48,13 +48,6 @@ public class ListingActivity : Activity
     {
 
         return _prompts;
-    }
-
-    public DateTime GetFutureTime(int duration)
-    {
-        DateTime futureTime = new DateTime();
-        futureTime = DateTime.Now.AddSeconds(duration);
-        return futureTime;
     }
 
 }
