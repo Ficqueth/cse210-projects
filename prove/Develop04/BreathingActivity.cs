@@ -7,10 +7,9 @@ public class BreathingActivity : Activity
 
     public void Run()
     {
-        // Display starting message
         DisplayStartingMessage();
 
-        // Guide the user through breathing cycles
+        // when timer reaches the end of the _duration seconds it stops( it still finishes the cycle)
         for (int i = 0; i< _duration; i+=8)
         {
             Console.Write("\n\nBreathe in...");
@@ -19,7 +18,6 @@ public class BreathingActivity : Activity
             ShowCountDown(4);
         }
 
-        // Display ending message
         DisplayEndingMessage();
     }
 }

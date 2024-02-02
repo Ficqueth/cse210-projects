@@ -21,7 +21,7 @@ public class Activity
         int.TryParse(Console.ReadLine(), out _duration);
 
         Console.Clear();
-        Console.WriteLine("Get ready...");
+        Console.WriteLine("Get ready...\n");
         ShowSpinner(5);
     }
 
@@ -60,11 +60,6 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
-    }
-    protected int Duration
-    {
-        get => _duration;
-        set => _duration = value;
     }
 
 }
