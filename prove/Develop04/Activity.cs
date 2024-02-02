@@ -4,22 +4,33 @@ public class Activity
 {
     private string _name;
     private string _description;
-    private int _duration;
+    protected int _duration;
 
-    public Activity()
+    public Activity(string name, string description)
     {
-
+        _name = name;
+        _description = description;
     }
 
     public void DisplayStartingMessage()
     {
         Console.WriteLine($"Welcome to the {_name}.\n");
         Console.WriteLine($"{_description}");
+
+        Console.WriteLine("\nHow long, in seconds, would you like for your session? ");
+        int.TryParse(Console.ReadLine(), out _duration);
+
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner(5);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"Well done!!\n\nYou have completed another {_duration} of the {_name}");
+        Console.WriteLine($"\n\nWell done!!");
+        ShowSpinner(5);
+        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_name}.");
+        ShowSpinner(5);
     }
 
     public void ShowSpinner(int seconds)
@@ -43,7 +54,17 @@ public class Activity
 
     public void ShowCountDown(int seconds)
     {
-        
+        for (int i = seconds; i>0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+    }
+    protected int Duration
+    {
+        get => _duration;
+        set => _duration = value;
     }
 
 }
