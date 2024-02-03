@@ -6,6 +6,12 @@ public class Activity
     private string _description;
     protected int _duration;
 
+    private static int _counter;
+
+    public Activity()
+    {
+    }
+
     public Activity(string name, string description)
     {
         _name = name;
@@ -60,6 +66,15 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+    }
+
+    public static void SetCount()
+    {
+        _counter++;
+    }
+     public static int GetCount()
+    {
+        return _counter;
     }
 
 }

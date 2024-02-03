@@ -30,6 +30,7 @@ public class ReflectingActivity : Activity
         DisplayStartingMessage();
         DisplayPrompt();
         DisplayQuestions();
+        Activity.SetCount();
         DisplayEndingMessage();
     }
 

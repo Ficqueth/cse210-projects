@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Metrics;
 
 class Program
 {
@@ -38,6 +39,12 @@ class Program
                         listing.Run();
                         break;
                     case 4:
+                        Console.Clear();
+                        Activity activity = new Activity();
+                        Console.WriteLine($"You have done {Activity.GetCount()} activities.");
+                        activity.ShowSpinner(10);
+                        break;
+                    case 5:
                         quit=true;
                         break;
                 }

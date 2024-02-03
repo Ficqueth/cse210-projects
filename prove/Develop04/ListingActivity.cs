@@ -34,6 +34,7 @@ public class ListingActivity : Activity
             currentTime= DateTime.Now;
         }
         Console.WriteLine($"You listed {_count} items!\n");
+        Activity.SetCount();
         DisplayEndingMessage();
     }
 
