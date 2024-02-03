@@ -53,3 +53,6 @@ class Program
         Console.WriteLine("Exiting program.");
     }
 }
+
+// I added option 4 that keep track and can display a counter of how many activities were done.
+// Because of that I had to create 2 more methods ( SetCount and Getcount in the Activity class)
