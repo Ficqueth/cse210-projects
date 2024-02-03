@@ -44,10 +44,5 @@ public class ListingActivity : Activity
         return _prompts[index];
 
     }
-    public List<string> GetListFromUser()
-    {
-
-        return _prompts;
-    }
 
 }
