@@ -10,7 +10,7 @@ class Program
 
     while (menuSelected != "6") {
 
-        int points = goals.GetAccumulatedPoints();
+        int points = goals.DisplayPlayerInfo();
 
         Console.WriteLine($"You have {points} points.");
         Console.WriteLine();
@@ -39,19 +39,19 @@ class Program
                     case "1":
                         SimpleGoal newSimpleGoal = new SimpleGoal();
                         newSimpleGoal.CreateChildGoal();
-                        goals.addGoal(newSimpleGoal);
+                        goals.CreateGoal(newSimpleGoal);
                         break;
                     
                     case "2":
                         EternalGoal newEternalGoal = new EternalGoal();
                         newEternalGoal.CreateChildGoal();
-                        goals.addGoal(newEternalGoal);
+                        goals.CreateGoal(newEternalGoal);
                         break;
 
                     case "3":
                         ChecklistGoal newChecklistGoal = new ChecklistGoal();
                         newChecklistGoal.CreateChildGoal();
-                        goals.addGoal(newChecklistGoal);
+                        goals.CreateGoal(newChecklistGoal);
                         break;
                     
                     default:

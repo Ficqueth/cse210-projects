@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 
 public class Activity
 {
-    private string _name;
+    private string _shortName;
     private string _description;
     protected int _duration;
 
@@ -14,13 +14,13 @@ public class Activity
 
     public Activity(string name, string description)
     {
-        _name = name;
+        _shortName = name;
         _description = description;
     }
 
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_name}.\n");
+        Console.WriteLine($"Welcome to the {_shortName}.\n");
         Console.WriteLine($"{_description}");
 
         Console.WriteLine("\nHow long, in seconds, would you like for your session? ");
@@ -35,7 +35,7 @@ public class Activity
     {
         Console.WriteLine($"\n\nWell done!!");
         ShowSpinner(5);
-        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_name}.");
+        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_shortName}.");
         ShowSpinner(5);
     }
 

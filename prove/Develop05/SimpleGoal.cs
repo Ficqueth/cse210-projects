@@ -4,17 +4,14 @@ public class SimpleGoal : Goal
 {
     public SimpleGoal()
     {
-        _name = "Name of Simple Goal";
-        _description = "Description of Simple Goal";
-        _goalPoints = 50;
-        _status = false;
+
     }
 
-    public SimpleGoal(string name, string description, int goalPoints, bool status)
+    public SimpleGoal(string name, string description, int points, bool status)
     {
-        _name = name;
+        _shortName = name;
         _description = description;
-        _goalPoints = goalPoints;
+        _points = points;
         _status = status;
     }
 
@@ -50,25 +47,25 @@ public class SimpleGoal : Goal
         } else {
             statusSymbol = " ";
         }
-        Console.Write($"[{statusSymbol}] {_name} ({_description})");
+        Console.Write($"[{statusSymbol}] {_shortName} ({_description})");
     }
     
-    public override int CalculateAGP()
+    public override int CalculateScore()
     {
         bool status = IsComplete();
-        int aGP = 0;
+        int score = 0;
         if (status == true) {
-            aGP = _goalPoints;
+            score = _points;
         } else {
-            aGP = 0;
+            score = 0;
         }
-        return aGP;
+        return score;
     }
 
     public override string SaveGoal()
     {
         string line = "";
-        line = $"SimpleGoal:{_name},{_description}{_goalPoints},{IsComplete().ToString()}";
+        line = $"SimpleGoal:{_shortName},{_description}{_points},{IsComplete()}";
         return line;
     }
 }

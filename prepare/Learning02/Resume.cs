@@ -2,14 +2,14 @@ using System;
 
 public class Resume
 {
-    public string _name;
+    public string _shortName;
 
 
     public List<Job> _jobs = new List<Job>();
 
     public void Display()
     {
-        Console.WriteLine($"Name: {_name}");
+        Console.WriteLine($"Name: {_shortName}");
         Console.WriteLine("Jobs:");
 
 

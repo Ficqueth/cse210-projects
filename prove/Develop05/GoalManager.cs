@@ -4,24 +4,24 @@ public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
 
-    private int _accumulatedPoints = 0;
+    private int _score = 0;
 
-    public int GetAccumulatedPoints() {
+    public int DisplayPlayerInfo() {
 
-        int points = _accumulatedPoints;
+        int points = _score;
         return points;
 
     }
     public void SaveGoals()
     {
-        string fileName = "";
+
         Console.Write("What is the filename? ");
-        fileName = Console.ReadLine();
+        string fileName = Console.ReadLine();
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            int totalAGP = GetAccumulatedPoints();
-            outputFile.WriteLine(totalAGP.ToString());
+            int totalScore = DisplayPlayerInfo();
+            outputFile.WriteLine(totalScore.ToString());
             
             foreach(Goal goal in _goals)
             {
@@ -34,12 +34,11 @@ public class GoalManager
     {
         _goals.Clear(); 
 
-        string fileName = "";
         Console.Write("What is the filename? ");
-        fileName = Console.ReadLine();
+        string fileName = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(fileName);
 
-        _accumulatedPoints = Convert.ToInt32(lines[0]);
+        _score = Convert.ToInt32(lines[0]);
 
         for (int i = 1; i < lines.Count(); i++ )
         {
@@ -76,45 +75,44 @@ public class GoalManager
         Console.WriteLine();
     }
 
-    public void addGoal(Goal goal)
+    public void CreateGoal(Goal goal)
     {
         _goals.Add(goal);
     }
 
-    public int CalculateTotalAGP()
-    {
-        int totalAGP = _accumulatedPoints;
-        foreach(Goal goal in _goals) {
-            totalAGP += goal.CalculateAGP();
-        }
-
-        _accumulatedPoints = totalAGP;
-
-        return totalAGP;
-    }
-
     public void RecordEventInTracker()
     {
-        string goalIndex = "";
+
+        ListGoals();
         Console.Write("Which goal did you accomplish? ");
-        goalIndex = Console.ReadLine();
-        int goalIndexInt = Convert.ToInt32(goalIndex) - 1;
+        string goalIndex = Console.ReadLine();
 
-        if (_goals[goalIndexInt].IsComplete() == false) {
-
-            _goals[goalIndexInt].RecordEvent();
-
-            int pointsEarned = _goals[goalIndexInt].CalculateAGP();
-
-            _accumulatedPoints += pointsEarned;
-
-            Console.WriteLine($"Congratulations! You have earned {pointsEarned.ToString()} points!");
-            Console.WriteLine($"You now have {_accumulatedPoints} points");
-
-        } else {
-
-            Console.WriteLine("You have already completed this goal.");
-
+        if (int.TryParse(goalIndex, out int goalIndexInt))
+        {
+            goalIndexInt--;
+            if (goalIndexInt >= 0 && goalIndexInt < _goals.Count)
+            {
+                if (_goals[goalIndexInt].IsComplete() == false)
+                {
+                    _goals[goalIndexInt].RecordEvent();
+                    int pointsEarned = _goals[goalIndexInt].CalculateScore();
+                    _score += pointsEarned;
+                    Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
+                    Console.WriteLine($"You now have {_score} points");
+                }
+                else
+                {
+                    Console.WriteLine("You have already completed this goal.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid goal index. Please enter a number between 1 and {0}.", _goals.Count);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a number.");
         }
     }
 }

@@ -2,23 +2,23 @@ using System;
 
 public class ChecklistGoal : Goal
 {
-    private int _bonusPoints;
-    private int _steps;
-    private int _stepCounter;
+    private int _bonus;
+    private int _target;
+    private int _amountCompleted;
 
     public ChecklistGoal()
     {
 
     }
 
-    public ChecklistGoal(string name, string description, int goalPoints, int bonusPoints, int steps, int stepCounter)
+    public ChecklistGoal(string name, string description, int points, int bonus, int target, int amountCompleted)
     {
-        _name = name;
+        _shortName = name;
         _description = description;
-        _goalPoints = goalPoints;
-        _bonusPoints = bonusPoints;
-        _steps = steps;
-        _stepCounter = stepCounter;
+        _points = points;
+        _bonus = bonus;
+        _target = target;
+        _amountCompleted = amountCompleted;
     }
 
     public override void CreateChildGoal()
@@ -27,19 +27,28 @@ public class ChecklistGoal : Goal
 
         Console.Write("How many times does this goal need to be accomplished for a bonus? ");
         string stringChecklistSteps = Console.ReadLine();
-        _steps = Convert.ToInt32(stringChecklistSteps);
 
+        if (!int.TryParse(stringChecklistSteps, out int target))
+        {
+            Console.WriteLine("Invalid input. Please enter a number.");
+            return; // Exit the method to prevent invalid data
+        }
+        _target = target;
         Console.Write("What is the bonus for accomplishing it that many times? ");
         string bonusPoints = Console.ReadLine();
-        _bonusPoints = Convert.ToInt32(bonusPoints);
 
-        _stepCounter = 0;
-
+        if (!int.TryParse(bonusPoints, out int bonus))
+        {
+            Console.WriteLine("Invalid input. Please enter a number.");
+            return; // Exit the method to prevent invalid data
+        }
+        _bonus = bonus;
+        _amountCompleted = 0;
     }
 
     public override bool IsComplete() 
     {
-        if (_stepCounter >= _steps) {
+        if (_amountCompleted >= _target) {
             return true;
         } else {
             return false;
@@ -48,19 +57,19 @@ public class ChecklistGoal : Goal
     
     public override void RecordEvent()
     {
-        _stepCounter ++;
+        _amountCompleted ++;
     }
 
-    public override int CalculateAGP()
+    public override int CalculateScore()
     {
         int points = 0;
 
-        points = _stepCounter * _goalPoints;
+        points = _amountCompleted * _points;
 
         bool status = IsComplete();
 
         if (status == true) {
-            points += _bonusPoints;
+            points += _bonus;
         }
 
         return points;
@@ -77,13 +86,13 @@ public class ChecklistGoal : Goal
             statusSymbol = " ";
         }
 
-        Console.Write($"[{statusSymbol}] {_name} ({_description}) -- Currently Completed {_stepCounter}/{_steps}");
+        Console.Write($"[{statusSymbol}] {_shortName} ({_description}) -- Currently Completed {_amountCompleted}/{_target}");
     }
 
     public override string SaveGoal()
     {
         string line = "";
-        line = $"ChecklistGoal:" + _name + "," + _description + "," + _goalPoints.ToString() + "," + _bonusPoints.ToString() + "," + _steps.ToString() + "," + _stepCounter.ToString();
+        line = $"ChecklistGoal:" + _shortName + "," + _description + "," + _points + "," + _bonus + "," + _target + "," + _amountCompleted;
         return line;
     }
 

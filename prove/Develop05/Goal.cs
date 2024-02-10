@@ -1,70 +1,62 @@
 using System;
 
-public class Goal
+public abstract class Goal
 {
-    protected string _name;
+    protected string _shortName;
     protected string _description;
-    protected int _goalPoints;
+    protected int _points;
     protected bool _status;
 
     public Goal() 
     {
-        _name = "Test Name";
+        _shortName = "Test Name";
         _description = "Test Description";
-        _goalPoints = 50;
+        _points = 10;
         _status = false;
     }
 
-    public Goal(string name, string description, int goalPoints)
+    public Goal(string name, string description, int points)
     {
-        _name = name;
+        _shortName = name;
         _description = description;
-        _goalPoints = goalPoints;
+        _points = points;
     }
 
     protected void CreateBaseGoal() 
     {   
         Console.Write("What is the name of your goal? ");
-        _name = Console.ReadLine();
+        _shortName = Console.ReadLine();
         
         Console.Write("What is a short description of it? ");
         _description = Console.ReadLine();
         
         Console.Write("What is the amount of points associated with this goal? ");
-        string stringGoalPoints = (Console.ReadLine());
-        _goalPoints = Convert.ToInt32(stringGoalPoints);
+        string stringGoalPoints = Console.ReadLine();
+        _points = Convert.ToInt32(stringGoalPoints);
 
         _status = false;
     }
 
     public virtual string SaveGoal()
     {
-        string line = "";
-        return line;
+        return "" ;
     }
 
-    public virtual void CreateChildGoal()
-    {
+    public abstract void CreateChildGoal();
 
-    }
-
-    public virtual void RecordEvent() 
-    {
-
-    }
+    public abstract void RecordEvent();
 
     public virtual bool IsComplete() 
     {
         return false;
     }
 
-    public virtual void ListGoal() 
-    {
+    public abstract void ListGoal();
 
-    }
-
-    public virtual int CalculateAGP()
+    public virtual int CalculateScore()
     {
         return 0;
     }
+
+
 }
