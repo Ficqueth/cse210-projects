@@ -10,5 +10,6 @@ public class Notification {
     public void SendNotification() {
         Console.WriteLine($"Notification: {_message}");
         Console.WriteLine($"Task Details - Description: {_task.GetDescription()}, Deadline: {_task.GetDeadline()}, Priority: {_task.GetPriority()}");
+        // Trying to implement an email notification( not done)
     }
 }

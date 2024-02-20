@@ -26,7 +26,7 @@ public class UI {
             int choice = int.Parse(Console.ReadLine());
             switch (choice) {
                 case 1:
-                    // Prompt user to add task and add it to the task list
+                    // Add tast
                     Console.WriteLine("Enter task description:");
                     string description = Console.ReadLine();
                     Console.WriteLine("Enter task deadline (YYYY-MM-DD):");
@@ -37,7 +37,7 @@ public class UI {
                     _taskList.AddTask(task);
                     break;
                 case 2:
-                    // Prompt user to remove task from the task list
+                    // Remove tasK
                     Console.WriteLine("Enter task description to remove:");
                     string taskDescription = Console.ReadLine();
                     Task taskToRemove = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescription);
@@ -49,7 +49,7 @@ public class UI {
                     }
                     break;
                 case 3:
-                    // Prompt user to mark task as completed
+                    // Mark task as completed
                     Console.WriteLine("Enter task description to mark as completed:");
                     string taskDescriptionToComplete = Console.ReadLine();
                     Task taskToComplete = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescriptionToComplete);
@@ -61,14 +61,14 @@ public class UI {
                     }
                     break;
                 case 4:
-                    // Display incomplete tasks
+                    // View incomplete tasks
                     Console.WriteLine("Incomplete Tasks:");
                     foreach (var incompleteTask in _taskList.GetIncompleteTasks()) {
                         Console.WriteLine($"- {incompleteTask.GetDescription()}");
                     }
                     break;
                 case 5:
-                    // Display completed tasks
+                    // View Completed tasks
                     Console.WriteLine("Completed Tasks:");
                     foreach (var completedTask in _taskList.GetCompletedTasks()) {
                         Console.WriteLine($"- {completedTask.GetDescription()}");
@@ -86,7 +86,7 @@ public class UI {
                     Console.WriteLine("Tasks sorted successfully.");
                     break;
                 case 7:
-                    // Logout
+                    // Logout of program
                     loggedIn = false;
                     Console.WriteLine("Logged out successfully.");
                     break;
