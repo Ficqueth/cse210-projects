@@ -1,9 +1,9 @@
 using System;
 
 public class Reminder {
-    public Task _task { get; private set; }
-    public DateTime _reminderDateTime { get; set; }
-    public bool _isDismissed { get; set; }
+    private Task _task;
+    private DateTime _reminderDateTime;
+    private bool _isDismissed;
 
     public Reminder(Task task, DateTime reminderDateTime) {
         _task = task;

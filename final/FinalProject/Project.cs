@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 
 public class Project {
-    public string _projectName { get; set; }
-    public List<Task> _tasks { get; private set; }
+    private string _projectName;
+    private List<Task> _tasks;
 
     public Project(string projectName) {
         _projectName = projectName;
@@ -19,18 +19,18 @@ public class Project {
     }
 
     public void SortTasksByDeadline() {
-        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
+        _tasks.Sort((t1, t2) => t1.GetDeadline().CompareTo(t2.GetDeadline()));
     }
 
     public void SortTasksByPriority() {
-        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
+        _tasks.Sort((t1, t2) => t1.GetDeadline().CompareTo(t2.GetDeadline()));
     }
 
     public List<Task> GetIncompleteTasks() {
-        return _tasks.FindAll(task => !task._isCompleted);
+        return _tasks.FindAll(task => !task.IsTaskCompleted());
     }
 
     public List<Task> GetCompletedTasks() {
-        return _tasks.FindAll(task => task._isCompleted);
+        return _tasks.FindAll(task => task.IsTaskCompleted());
     }
 }

@@ -1,7 +1,7 @@
 
 public class Category {
-    public string _categoryName { get; private set; }
-    public List<Task> _tasks { get; private set; }
+    private string _categoryName;
+    private List<Task> _tasks;
 
     public Category(string categoryName) {
         _categoryName = categoryName;

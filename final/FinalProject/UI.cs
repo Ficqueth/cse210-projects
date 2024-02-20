@@ -40,7 +40,7 @@ public class UI {
                     // Prompt user to remove task from the task list
                     Console.WriteLine("Enter task description to remove:");
                     string taskDescription = Console.ReadLine();
-                    Task taskToRemove = _taskList.GetIncompleteTasks().Find(t => t._description == taskDescription);
+                    Task taskToRemove = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescription);
                     if (taskToRemove != null) {
                         _taskList.RemoveTask(taskToRemove);
                         Console.WriteLine("Task removed successfully.");
@@ -52,7 +52,7 @@ public class UI {
                     // Prompt user to mark task as completed
                     Console.WriteLine("Enter task description to mark as completed:");
                     string taskDescriptionToComplete = Console.ReadLine();
-                    Task taskToComplete = _taskList.GetIncompleteTasks().Find(t => t._description == taskDescriptionToComplete);
+                    Task taskToComplete = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescriptionToComplete);
                     if (taskToComplete != null) {
                         taskToComplete.MarkAsCompleted();
                         Console.WriteLine("Task marked as completed successfully.");
@@ -64,14 +64,14 @@ public class UI {
                     // Display incomplete tasks
                     Console.WriteLine("Incomplete Tasks:");
                     foreach (var incompleteTask in _taskList.GetIncompleteTasks()) {
-                        Console.WriteLine($"- {incompleteTask._description}");
+                        Console.WriteLine($"- {incompleteTask.GetDescription()}");
                     }
                     break;
                 case 5:
                     // Display completed tasks
                     Console.WriteLine("Completed Tasks:");
                     foreach (var completedTask in _taskList.GetCompletedTasks()) {
-                        Console.WriteLine($"- {completedTask._description}");
+                        Console.WriteLine($"- {completedTask.GetDescription()}");
                     }
                     break;
                 case 6:

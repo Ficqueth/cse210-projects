@@ -1,7 +1,7 @@
 public class User {
-    public string _username { get; set; }
-    private string _password { get; set; }
-    public string _email { get; set; }
+    private string _username;
+    private string _password;
+    private string _email;
 
     public User(string username, string password, string email) {
         _username = username;

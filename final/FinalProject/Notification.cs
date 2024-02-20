@@ -1,6 +1,6 @@
 public class Notification {
-    public string _message { get; private set; }
-    public Task _task { get; private set; }
+    private string _message;
+    private Task _task;
 
     public Notification(string message, Task task) {
         _message = message;
@@ -8,6 +8,7 @@ public class Notification {
     }
 
     public void SendNotification() {
-        // Implementation for sending notification
+        Console.WriteLine($"Notification: {_message}");
+        Console.WriteLine($"Task Details - Description: {_task.GetDescription()}, Deadline: {_task.GetDeadline()}, Priority: {_task.GetPriority()}");
     }
 }

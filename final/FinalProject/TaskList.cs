@@ -13,18 +13,18 @@ public class TaskList {
     }
 
     public void SortTasksByDeadline() {
-        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
+        _tasks.Sort((t1, t2) => t1.GetDeadline().CompareTo(t2.GetDeadline()));
     }
 
     public void SortTasksByPriority() {
-        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
+        _tasks.Sort((t1, t2) => t1.GetDeadline().CompareTo(t2.GetDeadline()));
     }
 
     public List<Task> GetIncompleteTasks() {
-        return _tasks.FindAll(task => !task._isCompleted);
+        return _tasks.FindAll(task => !task.IsTaskCompleted());
     }
 
     public List<Task> GetCompletedTasks() {
-        return _tasks.FindAll(task => task._isCompleted);
+        return _tasks.FindAll(task => task.IsTaskCompleted());
     }
 }
