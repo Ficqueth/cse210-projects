@@ -1,17 +1,17 @@
 using System;
 
 public class Reminder {
-    public Task Task { get; private set; }
-    public DateTime ReminderDateTime { get; set; }
-    public bool IsDismissed { get; set; }
+    public Task _task { get; private set; }
+    public DateTime _reminderDateTime { get; set; }
+    public bool _isDismissed { get; set; }
 
     public Reminder(Task task, DateTime reminderDateTime) {
-        Task = task;
-        ReminderDateTime = reminderDateTime;
-        IsDismissed = false;
+        _task = task;
+        _reminderDateTime = reminderDateTime;
+        _isDismissed = false;
     }
 
     public void DismissReminder() {
-        IsDismissed = true;
+        _isDismissed = true;
     }
 }

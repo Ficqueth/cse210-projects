@@ -1,10 +1,10 @@
 using System;
 
 public class UI {
-    private TaskList taskList;
+    private TaskList _taskList;
 
     public UI(TaskList taskList) {
-        this.taskList = taskList;
+        this._taskList = taskList;
     }
 
     public void DisplayMainMenu() {
@@ -34,15 +34,15 @@ public class UI {
                     Console.WriteLine("Enter task priority (1 for high, 2 for medium, 3 for low):");
                     int priority = int.Parse(Console.ReadLine());
                     Task task = new Task(description, deadline, priority);
-                    taskList.AddTask(task);
+                    _taskList.AddTask(task);
                     break;
                 case 2:
                     // Prompt user to remove task from the task list
                     Console.WriteLine("Enter task description to remove:");
                     string taskDescription = Console.ReadLine();
-                    Task taskToRemove = taskList.GetIncompleteTasks().Find(t => t.Description == taskDescription);
+                    Task taskToRemove = _taskList.GetIncompleteTasks().Find(t => t.Description == taskDescription);
                     if (taskToRemove != null) {
-                        taskList.RemoveTask(taskToRemove);
+                        _taskList.RemoveTask(taskToRemove);
                         Console.WriteLine("Task removed successfully.");
                     } else {
                         Console.WriteLine("Task not found.");
@@ -52,7 +52,7 @@ public class UI {
                     // Prompt user to mark task as completed
                     Console.WriteLine("Enter task description to mark as completed:");
                     string taskDescriptionToComplete = Console.ReadLine();
-                    Task taskToComplete = taskList.GetIncompleteTasks().Find(t => t.Description == taskDescriptionToComplete);
+                    Task taskToComplete = _taskList.GetIncompleteTasks().Find(t => t.Description == taskDescriptionToComplete);
                     if (taskToComplete != null) {
                         taskToComplete.MarkAsCompleted();
                         Console.WriteLine("Task marked as completed successfully.");
@@ -63,14 +63,14 @@ public class UI {
                 case 4:
                     // Display incomplete tasks
                     Console.WriteLine("Incomplete Tasks:");
-                    foreach (var incompleteTask in taskList.GetIncompleteTasks()) {
+                    foreach (var incompleteTask in _taskList.GetIncompleteTasks()) {
                         Console.WriteLine($"- {incompleteTask.Description}");
                     }
                     break;
                 case 5:
                     // Display completed tasks
                     Console.WriteLine("Completed Tasks:");
-                    foreach (var completedTask in taskList.GetCompletedTasks()) {
+                    foreach (var completedTask in _taskList.GetCompletedTasks()) {
                         Console.WriteLine($"- {completedTask.Description}");
                     }
                     break;
@@ -79,9 +79,9 @@ public class UI {
                     Console.WriteLine("Sort tasks by (1 for deadline, 2 for priority):");
                     int sortChoice = int.Parse(Console.ReadLine());
                     if (sortChoice == 1) {
-                        taskList.SortTasksByDeadline();
+                        _taskList.SortTasksByDeadline();
                     } else if (sortChoice == 2) {
-                        taskList.SortTasksByPriority();
+                        _taskList.SortTasksByPriority();
                     }
                     Console.WriteLine("Tasks sorted successfully.");
                     break;

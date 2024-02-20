@@ -1,10 +1,10 @@
 public class Notification {
-    public string Message { get; private set; }
-    public Task Task { get; private set; }
+    public string _message { get; private set; }
+    public Task _task { get; private set; }
 
     public Notification(string message, Task task) {
-        Message = message;
-        Task = task;
+        _message = message;
+        _task = task;
     }
 
     public void SendNotification() {

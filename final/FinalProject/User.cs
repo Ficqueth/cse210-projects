@@ -1,15 +1,15 @@
 public class User {
-    public string Username { get; set; }
-    private string Password { get; set; }
-    public string Email { get; set; }
+    public string _username { get; set; }
+    private string _password { get; set; }
+    public string _email { get; set; }
 
     public User(string username, string password, string email) {
-        Username = username;
-        Password = password;
-        Email = email;
+        _username = username;
+        _password = password;
+        _email = email;
     }
 
     public bool Authenticate(string username, string password) {
-        return Username == username && Password == password;
+        return _username == username && _password == password;
     }
 }

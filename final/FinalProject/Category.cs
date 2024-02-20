@@ -1,22 +1,22 @@
 
 public class Category {
-    public string CategoryName { get; private set; }
-    public List<Task> Tasks { get; private set; }
+    public string _categoryName { get; private set; }
+    public List<Task> _tasks { get; private set; }
 
     public Category(string categoryName) {
-        CategoryName = categoryName;
-        Tasks = new List<Task>();
+        _categoryName = categoryName;
+        _tasks = new List<Task>();
     }
 
     public void AddTask(Task task) {
-        Tasks.Add(task);
+        _tasks.Add(task);
     }
 
     public void RemoveTask(Task task) {
-        Tasks.Remove(task);
+        _tasks.Remove(task);
     }
 
     public List<Task> GetTasks() {
-        return Tasks;
+        return _tasks;
     }
 }

@@ -1,19 +1,19 @@
 using System;
 
 public class Task {
-    public string Description { get; set; }
-    public DateTime Deadline { get; set; }
-    public int Priority { get; set; }
-    public bool IsCompleted { get; set; }
+    public string _description { get; set; }
+    public DateTime _deadline { get; set; }
+    public int _priority { get; set; }
+    public bool _isCompleted { get; set; }
 
     public Task(string description, DateTime deadline, int priority) {
-        Description = description;
-        Deadline = deadline;
-        Priority = priority;
-        IsCompleted = false;
+        _description = description;
+        _deadline = deadline;
+        _priority = priority;
+       _isCompleted = false;
     }
 
     public void MarkAsCompleted() {
-        IsCompleted = true;
+        _isCompleted = true;
     }
 }
