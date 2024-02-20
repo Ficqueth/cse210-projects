@@ -7,11 +7,11 @@ public class TaskManager {
         _tasks = new List<Task>();
     }
 
-    public void AddTask(Task task) {
+    public virtual void AddTask(Task task) {
         _tasks.Add(task);
     }
 
-    public void RemoveTask(Task task) {
+    public virtual void RemoveTask(Task task) {
         _tasks.Remove(task);
     }
 
