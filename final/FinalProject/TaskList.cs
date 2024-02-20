@@ -13,11 +13,11 @@ public class TaskList {
     }
 
     public void SortTasksByDeadline() {
-        _tasks.Sort((t1, t2) => t1.Deadline.CompareTo(t2.Deadline));
+        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
     }
 
     public void SortTasksByPriority() {
-        _tasks.Sort((t1, t2) => t1.Priority.CompareTo(t2.Priority));
+        _tasks.Sort((t1, t2) => t1._deadline.CompareTo(t2._deadline));
     }
 
     public List<Task> GetIncompleteTasks() {
