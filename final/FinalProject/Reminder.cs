@@ -1,4 +1,3 @@
-using System;
 
 public class Reminder {
     private Task _task;
