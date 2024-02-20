@@ -26,18 +26,18 @@ public class UI {
             switch (choice) {
                 case 1:
                     // Add tast
-                    Console.WriteLine("Enter task description:");
+                    Console.WriteLine("Enter task description: ");
                     string description = Console.ReadLine();
                     Console.WriteLine("Enter task deadline (YYYY-MM-DD):");
                     DateTime deadline = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter task priority (1 for high, 2 for medium, 3 for low):");
+                    Console.WriteLine("Enter task priority (1 for high, 2 for medium, 3 for low): ");
                     int priority = int.Parse(Console.ReadLine());
                     Task task = new Task(description, deadline, priority);
                     _taskList.AddTask(task);
                     break;
                 case 2:
                     // Remove tasK
-                    Console.WriteLine("Enter task description to remove:");
+                    Console.WriteLine("Enter task description to remove: ");
                     string taskDescription = Console.ReadLine();
                     Task taskToRemove = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescription);
                     if (taskToRemove != null) {
@@ -49,7 +49,7 @@ public class UI {
                     break;
                 case 3:
                     // Mark task as completed
-                    Console.WriteLine("Enter task description to mark as completed:");
+                    Console.WriteLine("Enter task description to mark as completed: ");
                     string taskDescriptionToComplete = Console.ReadLine();
                     Task taskToComplete = _taskList.GetIncompleteTasks().Find(t => t.GetDescription() == taskDescriptionToComplete);
                     if (taskToComplete != null) {
@@ -61,16 +61,16 @@ public class UI {
                     break;
                 case 4:
                     // View incomplete tasks
-                    Console.WriteLine("Incomplete Tasks:");
+                    Console.WriteLine("Incomplete Tasks: ");
                     foreach (var incompleteTask in _taskList.GetIncompleteTasks()) {
-                        Console.WriteLine($"- {incompleteTask.GetDescription()}");
+                        Console.WriteLine($"- {incompleteTask.GetDescription()}\n");
                     }
                     break;
                 case 5:
                     // View Completed tasks
-                    Console.WriteLine("Completed Tasks:");
+                    Console.WriteLine("Completed Tasks: ");
                     foreach (var completedTask in _taskList.GetCompletedTasks()) {
-                        Console.WriteLine($"- {completedTask.GetDescription()}");
+                        Console.WriteLine($"- {completedTask.GetDescription()}\n");
                     }
                     break;
                 case 6:
